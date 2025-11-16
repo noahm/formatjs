@@ -194,7 +194,9 @@ export const rule: RuleModule<MessageIds, Options> = {
         if (
           node.value.type === 'Literal' &&
           typeof node.value.value === 'string' &&
-          node.value.value.length > 0
+          node.value.value.length > 0 &&
+          // ignore spacing fragments
+          node.value.value !== ' '
         ) {
           context.report({
             node: node,
